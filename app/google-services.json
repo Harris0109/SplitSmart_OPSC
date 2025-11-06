@@ -12,7 +12,12 @@
           "package_name": "com.example.splitsmart20"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "397231502805-v06ifrjl83coc1t1eqvfd48ovppk89nl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyAjrp_qRhNiNCgKXlBN_NUOHaLgmXgsDy8"
@@ -20,7 +25,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "397231502805-v06ifrjl83coc1t1eqvfd48ovppk89nl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

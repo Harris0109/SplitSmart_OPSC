@@ -35,6 +35,13 @@
             android:name=".HomeActivity"
             android:exported="false" />
 
+        <!-- For google single-sign on option-->
+        <meta-data
+        android:name="com.google.android.gms.version"
+        android:value="@integer/google_play_services_version" />
+
+
+
     </application>
 
 </manifest>
