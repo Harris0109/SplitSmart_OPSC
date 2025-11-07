@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SplitSmart.Maui.Pages.SettingsPage"
+             BackgroundColor="#FFFFFF"
+             Title="Settings">
+
+    <ContentPage.Resources>
+        <Style x:Key="SectionHeader" TargetType="Label">
+            <Setter Property="TextColor" Value="#333333" />
+            <Setter Property="FontAttributes" Value="Bold" />
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="Margin" Value="0,12,0,6" />
+        </Style>
+
+        <Style x:Key="SectionContainer" TargetType="Frame">
+            <Setter Property="BackgroundColor" Value="#FFFFFF" />
+            <Setter Property="HasShadow" Value="False" />
+            <Setter Property="Padding" Value="12" />
+            <Setter Property="CornerRadius" Value="8" />
+            <Setter Property="Margin" Value="12,6" />
+        </Style>
+    </ContentPage.Resources>
+
+    <Grid RowDefinitions="Auto,*,Auto">
+        <ScrollView Grid.Row="0">
+            <VerticalStackLayout Padding="12" Spacing="8">
+
+                <Label Text="Settings" FontSize="24" FontAttributes="Bold" TextColor="#333333" Margin="0,6" />
+
+                <!-- Section 1: Multi-language -->
+                <Frame Style="{StaticResource SectionContainer}">
+                    <VerticalStackLayout>
+                        <Label Text="Multi-language" Style="{StaticResource SectionHeader}" />
+
+                        <Grid ColumnDefinitions="*,Auto" VerticalOptions="Center">
+                            <Label Text="Enable multilingual interface" VerticalOptions="Center" TextColor="#333333" />
+                            <Switch x:Name="MultiLangSwitch" IsToggled="False" HorizontalOptions="End" Toggled="OnMultiLangToggled" />
+                        </Grid>
+
+                        <!-- Dropdown appears when switch is ON -->
+                        <Picker x:Name="LanguagePicker" Title="Select language" IsVisible="False" TextColor="#000000" SelectedIndexChanged="OnLanguageSelected">
+                            <Picker.Items>
+                                <x:String>English</x:String>
+                                <x:String>isiXhosa</x:String>
+                                <x:String>Afrikaans</x:String>
+                            </Picker.Items>
+                        </Picker>
+                    </VerticalStackLayout>
+                </Frame>
+
+                <!-- Section 2: Notifications -->
+                <Frame Style="{StaticResource SectionContainer}">
+                    <VerticalStackLayout>
+                        <Label Text="Notifications" Style="{StaticResource SectionHeader}" />
+                        <Grid ColumnDefinitions="*,Auto" VerticalOptions="Center">
+                            <Label Text="Enable alerts and updates" VerticalOptions="Center" TextColor="#333333" />
+                            <Switch x:Name="NotificationsSwitch" HorizontalOptions="End" Toggled="OnNotificationsToggled" />
+                        </Grid>
+                    </VerticalStackLayout>
+                </Frame>
+
+                <!-- Section 3: Offline Sync -->
+                <Frame Style="{StaticResource SectionContainer}">
+                    <VerticalStackLayout>
+                        <Label Text="Offline Sync" Style="{StaticResource SectionHeader}" />
+                        <Grid ColumnDefinitions="*,Auto" VerticalOptions="Center">
+                            <Label Text="Enable offline data synchronization" VerticalOptions="Center" TextColor="#333333" />
+                            <Switch x:Name="OfflineSyncSwitch" HorizontalOptions="End" Toggled="OnOfflineSyncToggled" />
+                        </Grid>
+                    </VerticalStackLayout>
+                </Frame>
+
+                <BoxView HeightRequest="24" Color="Transparent" />
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <!-- Spacer for content expansion -->
+        <BoxView Grid.Row="1" Color="Transparent" />
+
+        <!-- Bottom Navigation Bar -->
+        <Grid Grid.Row="2" BackgroundColor="#F8F8F8" HeightRequest="72" VerticalOptions="End">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <!-- Home -->
+            <StackLayout Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center" Spacing="2">
+                <Label x:Name="NavIcon0" Text="🏠" FontSize="20" HorizontalOptions="Center" TextColor="#666666" />
+                <Label Text="Home" FontSize="10" TextColor="#666666" />
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnNavTapped" CommandParameter="0" />
+                </StackLayout.GestureRecognizers>
+            </StackLayout>
+
+            <!-- Add -->
+            <StackLayout Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center" Spacing="2">
+                <Label x:Name="NavIcon1" Text="➕" FontSize="20" HorizontalOptions="Center" TextColor="#666666" />
+                <Label Text="Add" FontSize="10" TextColor="#666666" />
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnNavTapped" CommandParameter="1" />
+                </StackLayout.GestureRecognizers>
+            </StackLayout>
+
+            <!-- List -->
+            <StackLayout Grid.Column="2" HorizontalOptions="Center" VerticalOptions="Center" Spacing="2">
+                <Label x:Name="NavIcon2" Text="📋" FontSize="20" HorizontalOptions="Center" TextColor="#666666" />
+                <Label Text="List" FontSize="10" TextColor="#666666" />
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnNavTapped" CommandParameter="2" />
+                </StackLayout.GestureRecognizers>
+            </StackLayout>
+
+            <!-- Contacts -->
+            <StackLayout Grid.Column="3" HorizontalOptions="Center" VerticalOptions="Center" Spacing="2">
+                <Label x:Name="NavIcon3" Text="👥" FontSize="20" HorizontalOptions="Center" TextColor="#666666" />
+                <Label Text="Contacts" FontSize="10" TextColor="#666666" />
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnNavTapped" CommandParameter="3" />
+                </StackLayout.GestureRecognizers>
+            </StackLayout>
+
+            <!-- Settings (active) -->
+            <StackLayout Grid.Column="4" HorizontalOptions="Center" VerticalOptions="Center" Spacing="2">
+                <Label x:Name="NavIcon4" Text="⚙️" FontSize="20" HorizontalOptions="Center" />
+                <Label x:Name="NavLabel4" Text="Settings" FontSize="10" />
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnNavTapped" CommandParameter="4" />
+                </StackLayout.GestureRecognizers>
+            </StackLayout>
+
+        </Grid>
+
+    </Grid>
+</ContentPage>
