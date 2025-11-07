@@ -1,0 +1,9 @@
+* [33ma63403b[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m Initial commit for SplitSmart_OPSC project
+* [33m8842261[m Created the dashboard. added the added the setupUser method in the SignUpActivity, removed the setupUser method in the HomeActivity and added the android tag to the AndroidManifest class
+*   [33mce26857[m Merge branch 'main' of https://github.com/Harris0109/SplitSmart_OPSC
+[32m|[m[33m\[m  
+[32m|[m * [33m16c15dd[m Added app icon
+* [33m|[m [33ma8c1a1f[m Created Google single-sign on option. Updated files: google-servoces.jason, gradle:module, LoginActivity, Android Manifest and strings.xml
+[33m|[m[33m/[m  
+* [33mec3fffc[m Updated AndroidManifest, declared LoginActivty, SignUpActivity & HomeActivity
+* [33mb199618[m Initial Commit: Pages that were created frontend and backend: Welcome, SignUp, Login and Home(placeholder). Firebase instance already set up and connected
