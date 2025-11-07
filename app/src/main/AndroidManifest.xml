@@ -2,6 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <!-- Add these permissions -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -17,10 +23,11 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity> <!-- Add these activity declarations -->
+        </activity>
+
+        <!-- Activity declarations -->
         <activity
             android:name=".LoginActivity"
             android:exported="false" />
@@ -36,21 +43,30 @@
         <activity
             android:name=".AddGroupActivity"
             android:exported="false" />
-        <activity
+        <!--<activity
             android:name=".ViewGroupActivity"
-            android:exported="false" /> <!-- For google single-sign on option -->
-        <meta-data
-            android:name="com.google.android.gms.version"
-            android:value="@integer/google_play_services_version" />
+            android:exported="false" /> -->
         <activity
             android:name=".DashboardActivity"
             android:exported="false"/>
-
-
         <activity
             android:name=".SettingsActivity"
             android:label="@string/settings"
             android:theme="@style/Theme.AppCompat.Light.DarkActionBar" />
+
+        <!-- For google single-sign on option -->
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+        <!-- ADD FCM Service for Notifications -->
+        <service
+            android:name=".service.FirebaseMessagingService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
 
     </application>
 

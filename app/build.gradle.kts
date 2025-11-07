@@ -53,6 +53,15 @@ dependencies {
     implementation("com.google.firebase:firebase-auth-ktx")
     implementation("com.google.firebase:firebase-firestore-ktx:24.9.1")
 
+    // Firestore Database
+    implementation("com.google.firebase:firebase-firestore-ktx")
+
+    // Notifications (FCM)
+    implementation("com.google.firebase:firebase-messaging-ktx")
+
+    // For background work
+    implementation("androidx.work:work-runtime-ktx:2.9.0")
+
     //For google single-sign on feature
     implementation ("com.google.android.gms:play-services-auth:20.7.0")
 
