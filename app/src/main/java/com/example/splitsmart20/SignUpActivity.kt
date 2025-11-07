@@ -8,19 +8,22 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.splitsmart20.databinding.ActivitySignupBinding
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 
 class SignUpActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySignupBinding
     private lateinit var auth: FirebaseAuth
+    private lateinit var firestore: FirebaseFirestore
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySignupBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Initialize Firebase Auth
+        // Initialize Firebase Auth and Firestore
         auth = FirebaseAuth.getInstance()
+        firestore = FirebaseFirestore.getInstance()
 
         setupClickListeners()
     }
@@ -57,12 +60,24 @@ class SignUpActivity : AppCompatActivity() {
             auth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
-                        // Registration success
-                        showToast("Account created successfully!")
-                        startActivity(Intent(this, LoginActivity::class.java))
-                        finish()
+                        val userId = auth.currentUser?.uid
+                        val userMap = hashMapOf(
+                            "fullName" to name,
+                            "email" to email
+                        )
+
+                        firestore.collection("users")
+                            .document(userId!!)
+                            .set(userMap)
+                            .addOnSuccessListener {
+                                showToast("Account created and user info saved!")
+                                startActivity(Intent(this, LoginActivity::class.java))
+                                finish()
+                            }
+                            .addOnFailureListener {
+                                showToast("Failed to save user info: ${it.message}")
+                            }
                     } else {
-                        // Registration failed
                         showToast("Registration failed: ${task.exception?.message}")
                     }
                 }

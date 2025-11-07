@@ -20,17 +20,7 @@ class HomeActivity : AppCompatActivity() {
         // Initialize Firebase Auth
         auth = FirebaseAuth.getInstance()
 
-        setupUserInfo()
         setupClickListeners()
-    }
-
-    private fun setupUserInfo() {
-        val currentUser = auth.currentUser
-        if (currentUser != null) {
-            binding.tvUserEmail.text = "Logged in as: ${currentUser.email}"
-        } else {
-            binding.tvUserEmail.text = "No user logged in"
-        }
     }
 
     private fun setupClickListeners() {
@@ -42,11 +32,9 @@ class HomeActivity : AppCompatActivity() {
             finish()
         }
 
-        // Continue button (placeholder for now)
+        // Continue button → Navigate to Dashboard
         binding.btnContinue.setOnClickListener {
-            showToast("Continue to main app - to be implemented")
-            // You can replace this with your main app activity later
-            // startActivity(Intent(this, MainAppActivity::class.java))
+            startActivity(Intent(this, DashboardActivity::class.java))
         }
     }
 
