@@ -45,7 +45,7 @@ class HomeActivity : AppCompatActivity() {
         // Continue to Dashboard button
         binding.btnContinue.setOnClickListener {
             showToast("Continue to main app")
-             startActivity(Intent(this, SettingsActivity::class.java))
+             startActivity(Intent(this, DashboardActivity::class.java))
         }
     }
 

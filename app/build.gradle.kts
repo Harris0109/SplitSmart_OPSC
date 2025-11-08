@@ -6,7 +6,7 @@ plugins {
 
 android {
     namespace = "com.example.splitsmart20"
-    compileSdk = 34
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "com.example.splitsmart20"
@@ -64,6 +64,7 @@ dependencies {
 
     //For google single-sign on feature
     implementation ("com.google.android.gms:play-services-auth:20.7.0")
+    implementation(libs.androidx.activity)
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")

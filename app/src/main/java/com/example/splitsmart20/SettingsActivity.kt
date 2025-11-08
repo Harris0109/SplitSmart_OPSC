@@ -1,10 +1,12 @@
 package com.example.splitsmart20
 
+import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.Button
 import android.widget.Spinner
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SwitchCompat
@@ -17,6 +19,10 @@ class SettingsActivity : AppCompatActivity() {
     private lateinit var offlineSyncToggle: SwitchCompat
 
     private lateinit var sharedPreferences: SharedPreferences
+
+    private lateinit var home : Button
+    private lateinit var group : Button
+    private lateinit var expense : Button
     private val PREFS_NAME = "AppPreferences"
     private val KEY_MULTI_LANGUAGE = "multi_language"
     private val KEY_SELECTED_LANGUAGE = "selected_language"
@@ -26,6 +32,23 @@ class SettingsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)
+
+        home = findViewById(R.id.homeBtn)
+        group = findViewById(R.id.groupBtn)
+        expense = findViewById(R.id.expenseBtn)
+
+        home.setOnClickListener {
+            val intent = Intent(this, DashboardActivity::class.java)
+            startActivity(intent)
+        }
+        group.setOnClickListener {
+            val intent = Intent(this, AddGroupActivity::class.java)
+            startActivity(intent)
+        }
+        expense.setOnClickListener {
+            val intent = Intent(this, AddExpenseActivity::class.java)
+            startActivity(intent)
+        }
 
         // Initialize SharedPreferences
         sharedPreferences = getSharedPreferences(PREFS_NAME, MODE_PRIVATE)

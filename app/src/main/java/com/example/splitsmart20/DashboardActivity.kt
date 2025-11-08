@@ -1,6 +1,9 @@
 package com.example.splitsmart20
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
+import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import com.example.splitsmart20.databinding.ActivityDashboardBinding
 import com.google.firebase.auth.FirebaseAuth
@@ -8,8 +11,35 @@ import com.google.firebase.firestore.FirebaseFirestore
 
 class DashboardActivity : AppCompatActivity() {
 
+    private lateinit var groupBtn : Button
+    private lateinit var expenseBtn : Button
+
+    private lateinit var settingsBtn : Button
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
+        setContentView(R.layout.activity_dashboard)
+
+        groupBtn = findViewById(R.id.groupBtn)
+        expenseBtn = findViewById(R.id.expenseBtn)
+       settingsBtn = findViewById(R.id.settingsBtn)
+
+
+        groupBtn.setOnClickListener {
+            val intent = Intent(this, AddGroupActivity::class.java)
+            startActivity(intent)
+        }
+        expenseBtn.setOnClickListener {
+            val intent = Intent(this, AddExpenseActivity::class.java)
+            startActivity(intent)
+        }
+        settingsBtn.setOnClickListener {
+            val intent = Intent(this, SettingsActivity::class.java)
+            startActivity(intent)
+        }
+    }
     // View Binding
-    private lateinit var binding: ActivityDashboardBinding
+    /*private lateinit var binding: ActivityDashboardBinding
 
     // Firebase
     private lateinit var auth: FirebaseAuth
@@ -28,6 +58,7 @@ class DashboardActivity : AppCompatActivity() {
 
         // Load user info
         setupUserInfo()
+
     }
 
     private fun setupUserInfo() {
@@ -52,5 +83,7 @@ class DashboardActivity : AppCompatActivity() {
                     binding.tvGroupName.text = "No group assigned"
                 }
         }
-    }
+    }*/
 }
+
+

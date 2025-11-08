@@ -63,9 +63,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Select Members"
-                android:textSize="12sp"
+                android:textSize="16sp"
                 android:textColor="#333333"
                 android:layout_marginTop="16dp" />
+
 
             <CheckBox android:id="@+id/checkboxMeena" android:text="Meena" android:layout_width="91dp" android:layout_height="30dp" android:textColor="#333333" />
             <CheckBox android:id="@+id/checkboxNazneen" android:text="Nazneen" android:layout_width="91dp" android:layout_height="30dp" android:textColor="#333333" />
@@ -81,6 +82,7 @@
                 android:textColor="#FFFFFF"
                 android:layout_marginTop="24dp"/>
 
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/groupRecyclerView"
                 android:layout_width="match_parent"
@@ -89,6 +91,46 @@
                 android:scrollbars="horizontal"
                 tools:listitem="@layout/item_group" />
 
+
         </LinearLayout>
     </ScrollView>
+
+    <Button
+        android:id="@+id/homeBtn"
+        android:layout_width="119dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="660dp"
+        android:layout_marginEnd="136dp"
+        android:backgroundTint="#FFFFFF"
+        android:text="Home"
+        android:textColor="#800020"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/expenseBtn"
+        android:layout_width="128dp"
+        android:layout_height="34dp"
+        android:layout_marginTop="660dp"
+        android:layout_marginEnd="268dp"
+        android:backgroundTint="#FFFFFF"
+        android:text="Add expense"
+        android:textColor="#800020"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/settingsBtn"
+        android:layout_width="114dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="660dp"
+        android:layout_marginEnd="12dp"
+        android:backgroundTint="#FFFFFF"
+        android:text="settings"
+        android:textColor="#800020"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

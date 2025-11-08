@@ -23,11 +23,14 @@ class AddGroupActivity : AppCompatActivity() {
     private lateinit var checkBoxJulie : CheckBox
     private lateinit var checkBoxJudith : CheckBox
     private lateinit var addGroupButton : AppCompatButton
-
     private lateinit var groupRecyclerView: RecyclerView
     private  lateinit var groupAdapter: GroupAdapter
+    private lateinit var home : Button
+    private lateinit var expense : Button
+    private lateinit var settings : Button
 
     private val groups = mutableListOf<GroupData>()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,6 +43,11 @@ class AddGroupActivity : AppCompatActivity() {
         checkBoxJulie = findViewById(R.id.checkboxJulie)
         checkBoxJudith = findViewById(R.id.checkboxJudith)
         addGroupButton = findViewById(R.id.addGroupButton)
+        home = findViewById(R.id.homeBtn)
+        expense = findViewById(R.id.expenseBtn)
+        settings = findViewById(R.id.settingsBtn)
+
+
 
         groupRecyclerView = findViewById(R.id.groupRecyclerView)
 
@@ -47,6 +55,20 @@ class AddGroupActivity : AppCompatActivity() {
         groupAdapter = GroupAdapter(groups)
         groupRecyclerView.layoutManager = LinearLayoutManager(this)
         groupRecyclerView.adapter = groupAdapter
+
+        home.setOnClickListener {
+            val intent = Intent(this, DashboardActivity::class.java)
+            startActivity(intent)
+        }
+        expense.setOnClickListener {
+            val intent = Intent(this, AddExpenseActivity::class.java)
+            startActivity(intent)
+        }
+        settings.setOnClickListener {
+            val intent = Intent(this, SettingsActivity::class.java)
+            startActivity(intent)
+        }
+
 
         // Handles Add Group Button
         addGroupButton.setOnClickListener {

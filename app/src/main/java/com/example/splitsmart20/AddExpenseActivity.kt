@@ -1,7 +1,9 @@
 package com.example.splitsmart20
 
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.Toast
@@ -22,6 +24,9 @@ class AddExpenseActivity : AppCompatActivity() {
     private lateinit var addButton: AppCompatButton
     private lateinit var recyclerView: RecyclerView
     private lateinit var memberAdapter: MemberAdapter
+    private lateinit var home : Button
+    private lateinit var group : Button
+    private lateinit var settings : Button
 
     // List to hold all expenses/members
     private val members = mutableListOf<MemberData>()
@@ -37,6 +42,9 @@ class AddExpenseActivity : AppCompatActivity() {
         checkboxJulie = findViewById(R.id.checkboxJulie)
         checkboxJudith = findViewById(R.id.checkboxJudith)
         addButton = findViewById(R.id.addButton)
+        home = findViewById(R.id.homeBtn)
+        group = findViewById(R.id.groupBtn)
+        settings = findViewById(R.id.settingsBtn)
 
         recyclerView = findViewById(R.id.recyclerView)
 
@@ -44,6 +52,19 @@ class AddExpenseActivity : AppCompatActivity() {
         memberAdapter = MemberAdapter(members)
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = memberAdapter
+
+        home.setOnClickListener {
+            val intent = Intent(this, DashboardActivity::class.java)
+            startActivity(intent)
+        }
+        group.setOnClickListener {
+            val intent = Intent(this, AddGroupActivity::class.java)
+            startActivity(intent)
+        }
+        settings.setOnClickListener {
+            val intent = Intent(this, SettingsActivity::class.java)
+            startActivity(intent)
+        }
 
         // Handle Add Button click
         addButton.setOnClickListener {
